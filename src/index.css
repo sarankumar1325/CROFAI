@@ -1,3 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "JetBrains Mono", monospace;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Dark Theme (Default) */
+:root,
+[data-theme="dark"] {
+  --bg-base: #0a0a10;
+  --bg-card: #111118;
+  --bg-elevated: #1c1c28;
+  --bg-input: #13111c;
+  
+  --border-default: #2a2a3d;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.1);
+  
+  --text-primary: #F4F0FB;
+  --text-secondary: #8B8598;
+  --text-muted: #5C566A;
+  --text-dim: #3D3748;
+  
+  --purple-primary: #7c3aed;
+  --purple-bright: #a78bfa;
+  --purple-wash: rgba(124, 58, 237, 0.08);
+  --purple-glow: rgba(167, 139, 250, 0.2);
+  
+  --success: #34D399;
+  --warning: #FBBF24;
+  --error: #F87171;
+  
+  --gradient-start: #8B5CF6;
+  --gradient-end: #6D28D9;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  
+  --surface-hover: rgba(255, 255, 255, 0.04);
+  --surface-active: rgba(255, 255, 255, 0.06);
+  
+  --chart-grid: rgba(255, 255, 255, 0.04);
+  --chart-bar: rgba(139, 92, 246, 0.5);
+  --chart-bar-hover: #8B5CF6;
+}
+
+/* Light Theme - WCAG Compliant */
+[data-theme="light"] {
+  --bg-base: #FAFBFC;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #F3F4F6;
+  --bg-input: #F9FAFB;
+  
+  --border-default: #E5E7EB;
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-hover: rgba(0, 0, 0, 0.1);
+  
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --text-dim: #9CA3AF;
+  
+  --purple-primary: #6D28D9;
+  --purple-bright: #7C3AED;
+  --purple-wash: rgba(109, 40, 217, 0.1);
+  --purple-glow: rgba(109, 40, 217, 0.2);
+  
+  --success: #059669;
+  --warning: #D97706;
+  --error: #DC2626;
+  
+  --gradient-start: #7C3AED;
+  --gradient-end: #6D28D9;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  
+  --surface-hover: rgba(0, 0, 0, 0.04);
+  --surface-active: rgba(0, 0, 0, 0.06);
+  
+  --chart-grid: rgba(0, 0, 0, 0.06);
+  --chart-bar: rgba(109, 40, 217, 0.4);
+  --chart-bar-hover: #6D28D9;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,11 +99,12 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #0A0A0A;
-  color: #F0EDE8;
-  font-family: Geist, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -38,7 +127,6 @@ pre {
   margin: 0;
 }
 
-/* Reset for specific elements */
 #root {
   width: 100%;
   min-height: 100vh;
@@ -48,4 +136,46 @@ pre {
 
 section {
   width: 100%;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+::selection {
+  background: var(--purple-wash);
+  color: var(--text-primary);
+}
+
+/* Input and textarea focus states for light mode */
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--purple-primary);
+  box-shadow: 0 0 0 3px var(--purple-wash);
+}
+
+/* Smooth transitions for theme changes */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* Override for specific elements that need instant transitions */
+button, a, .no-transition {
+  transition: none;
 }

@@ -5,6 +5,7 @@ import styles from './Index.module.css';
 import { ChromaGrid } from '../../components/ChromaGrid';
 import type { ChromaGridItem } from '../../components/ChromaGrid';
 import { CodePreview } from '../../components/CodePreview';
+import Logo from '../../components/Logo';
 
 const LandingPage = () => {
   const [copied, setCopied] = useState(false);
@@ -73,13 +74,13 @@ const LandingPage = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <a href="#/" className={styles.logo} style={{textDecoration: 'none'}}>CROF.AI</a>
+        <Logo />
         <div className={styles.navLinks}>
-          <a href="#/pricing" className={styles.navLink}>Pricing</a>
           <a href="#/docs" className={styles.navLink}>Docs</a>
-          <a href="#/signin" className={styles.navLink}>Sign In</a>
+          <a href="#/plan" className={styles.navLink}>Pricing</a>
+          <a href="#/playground" className={styles.navLink}>Sign In</a>
         </div>
-        <a href="#/footercta" className={styles.cta}>
+        <a href="#/playground" className={styles.cta}>
           Get Started <TerminalSquare size={16} />
         </a>
       </motion.nav>
@@ -88,8 +89,8 @@ const LandingPage = () => {
       <section className={styles.hero} ref={heroRef}>
         <motion.div className={styles.heroContent} style={{ y: heroY }}>
           <h1 className={styles.heroTitle}>
-            <div style={{ overflow: 'hidden' }}><span className="reveal-text" style={{ display: 'block' }}>POWERFUL MODELS.</span></div>
-            <div style={{ overflow: 'hidden' }}><span className={`reveal-text ${styles.heroTitleHighlight}`} style={{ display: 'block' }}>CRAZY CHEAP PRICING.</span></div>
+            <div style={{ overflow: 'hidden' }}><span className="reveal-text" style={{ display: 'block', fontSize: '5rem', fontWeight: '900', letterSpacing: '-0.02em', lineHeight: '0.9' }}>POWERFUL MODELS.</span></div>
+            <div style={{ overflow: 'hidden', marginTop: '5px' }}><span className={`reveal-text ${styles.heroTitleHighlight}`} style={{ display: 'block', fontSize: '5rem', fontWeight: '900', letterSpacing: '-0.02em', lineHeight: '0.9' }}>CRAZY CHEAP PRICING.</span></div>
           </h1>
           <motion.p 
             className={styles.heroSub}
@@ -105,7 +106,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
-            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#/footercta" className={styles.heroCta}>
+            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#/playground" className={styles.heroCta}>
               Get Started <ArrowRight size={18} style={{ marginLeft: '8px' }}/>
             </motion.a>
             <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#/pricing" className={styles.heroCtaOutline}>
@@ -240,7 +241,7 @@ const LandingPage = () => {
                 <motion.a 
                   whileHover={{ scale: 1.05 }} 
                   whileTap={{ scale: 0.95 }} 
-                  href="#/footercta" 
+                  href="#/playground" 
                   className={styles.pricingCta}
                 >
                   {plan.cta}
@@ -358,7 +359,7 @@ const LandingPage = () => {
         <motion.a 
           whileHover={{ scale: 1.05, backgroundColor: "#ffffff" }} 
           whileTap={{ scale: 0.95 }} 
-          href="#/footercta" 
+          href="#/playground" 
           className={styles.footerCtaButton}
         >
           Get Started <ArrowRight size={18} />

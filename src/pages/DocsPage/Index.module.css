@@ -12,7 +12,7 @@
 .page {
   background: var(--bg);
   color: var(--primary-text);
-  font-family: Geist, sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@
 }
 
 .menuItem {
-  font-family: Geist, sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
   color: var(--primary-text);
   text-decoration: none;

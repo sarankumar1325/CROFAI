@@ -15,7 +15,7 @@
 .page {
   background: var(--bg);
   color: var(--primary-text);
-  font-family: Geist, sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -119,12 +119,17 @@
 
 .heroTitle {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 5.5rem;
+  font-size: 5rem;
   line-height: 0.9;
   margin: 0;
   color: var(--primary-text);
   overflow: hidden; /* For GSAP reveal */
   text-transform: uppercase;
+}
+
+.heroTitle .reveal-text {
+  font-size: inherit;
+  letter-spacing: 0.02em;
 }
 
 .heroTitleHighlight {

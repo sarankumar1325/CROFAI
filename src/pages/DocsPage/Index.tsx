@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Copy, Check, TerminalSquare } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Index.module.css';
+import Logo from '../../components/Logo';
 
 const CodeBlock = ({ language, code }: { language: string, code: string }) => {
   const [copied, setCopied] = useState(false);
@@ -340,13 +341,13 @@ print(f"Credits: {data['credits']}")`,
     <div className={styles.page}>
       {/* Nav */}
       <nav className={styles.nav}>
-        <a href="#/" className={styles.logo}>CROF.AI</a>
+        <Logo />
         <div className={styles.navLinks}>
-          <a href="#/pricing" className={styles.navLink}>Pricing</a>
           <a href="#/docs" className={styles.navLink}>Docs</a>
-          <a href="#/signin" className={styles.navLink}>Sign In</a>
+          <a href="#/plan" className={styles.navLink}>Pricing</a>
+          <a href="#/dashboard" className={styles.navLink}>Sign In</a>
         </div>
-        <a href="#/footercta" className={styles.cta}>
+        <a href="#/dashboard" className={styles.cta}>
           Get Started <TerminalSquare size={16} />
         </a>
       </nav>
