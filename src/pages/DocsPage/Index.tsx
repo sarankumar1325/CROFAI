@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import { Copy, Check, TerminalSquare } from 'lucide-react';
+import { Copy, Check, Moon, Sun, TerminalSquare } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Index.module.css';
 import Logo from '../../components/Logo';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const CodeBlock = ({ language, code }: { language: string, code: string }) => {
   const [copied, setCopied] = useState(false);
@@ -29,13 +30,14 @@ const CodeBlock = ({ language, code }: { language: string, code: string }) => {
 };
 
 const DocsPage = () => {
-  const [copiedUrl, setCopiedUrl] = useState(false);
+  const [copiedText, setCopiedText] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
-  const handleCopyPageUrl = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    setCopiedUrl(true);
-    setTimeout(() => setCopiedUrl(false), 2000);
+  const handleCopyPageText = () => {
+    const text = document.querySelector('main')?.innerText || document.body.innerText;
+    navigator.clipboard.writeText(text);
+    setCopiedText(true);
+    setTimeout(() => setCopiedText(false), 2000);
   };
 
   const codeBlocks = {
@@ -347,9 +349,14 @@ print(f"Credits: {data['credits']}")`,
           <a href="#/plan" className={styles.navLink}>Pricing</a>
           <a href="#/dashboard" className={styles.navLink}>Sign In</a>
         </div>
-        <a href="#/dashboard" className={styles.cta}>
-          Get Started <TerminalSquare size={16} />
-        </a>
+        <div className={styles.navActions}>
+          <button className={styles.themeToggle} onClick={toggleTheme} aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}>
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <a href="#/dashboard" className={styles.cta}>
+            Get Started <TerminalSquare size={16} />
+          </a>
+        </div>
       </nav>
 
       <div className={styles.docsContainer}>
@@ -390,9 +397,9 @@ print(f"Credits: {data['credits']}")`,
               <h1 className={styles.pageTitle}>API Documentation</h1>
               <p className={styles.pageSub}>Integrate CrofAI into your applications.</p>
             </div>
-            <button className={styles.copyPageBtn} onClick={handleCopyPageUrl} aria-label="Copy page URL">
-              {copiedUrl ? <Check size={16} /> : <Copy size={16} />}
-              <span>{copiedUrl ? 'Copied!' : 'Copy URL'}</span>
+            <button className={styles.copyPageBtn} onClick={handleCopyPageText} aria-label="Copy page text">
+              {copiedText ? <Check size={16} /> : <Copy size={16} />}
+              <span>{copiedText ? 'Copied!' : 'Copy Page'}</span>
             </button>
           </div>
           

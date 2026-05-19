@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, Clock, Copy, Trash2, Plus, Check, ChevronLeft, ChevronRight, X, Loader2, Key } from 'lucide-react';
 import DashboardLayout from '../../components/DashboardLayout';
-import { useTheme } from '../../contexts/ThemeContext';
 
 // Theme-aware colors helper
-const getThemeColors = (isDark: boolean) => ({
+const getThemeColors = () => ({
   bgBase: 'var(--bg-base)',
   bgCard: 'var(--bg-card)',
   bgElevated: 'var(--bg-elevated)',
@@ -61,9 +60,7 @@ function getUsagePercent(used: number, limit: number): number {
 
 // Daily Token Usage Progress Component
 function DailyTokenProgress({ used, limit }: { used: number; limit: number }) {
-  const { isDark } = useTheme();
-  const colors = getThemeColors(isDark);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const colors = getThemeColors();
   const percent = getUsagePercent(used, limit);
   const remaining = Math.max(limit - used, 0);
   
@@ -84,8 +81,6 @@ function DailyTokenProgress({ used, limit }: { used: number; limit: number }) {
         boxShadow: 'var(--shadow-sm)',
         position: 'relative',
       }}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

@@ -1,0 +1,275 @@
+.dashboard-shell {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  min-height: 100dvh;
+}
+
+.premium-nav {
+  align-items: center;
+  background: color-mix(in srgb, var(--bg-base) 82%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid color-mix(in srgb, var(--border-default) 76%, transparent);
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+  height: 56px;
+  left: 0;
+  padding: 0 24px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.premium-nav__brand {
+  align-items: center;
+  border-radius: 10px;
+  color: var(--text-primary);
+  display: inline-flex;
+  gap: 10px;
+  justify-self: start;
+  min-width: 0;
+  padding: 6px 8px 6px 6px;
+  text-decoration: none;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.premium-nav__brand:hover {
+  background: var(--surface-hover);
+  transform: translateY(-1px);
+}
+
+.premium-nav__logo {
+  aspect-ratio: 1;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(52, 211, 153, 0.12);
+  height: 30px;
+  object-fit: cover;
+  width: 30px;
+}
+
+.premium-nav__name {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.premium-nav__tabs {
+  align-items: center;
+  background: color-mix(in srgb, var(--bg-card) 74%, transparent);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 2px;
+  justify-self: center;
+  padding: 3px;
+}
+
+.premium-nav__tab {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 560;
+  line-height: 1;
+  padding: 7px 11px;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+}
+
+.premium-nav__tab:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.premium-nav__tab--active {
+  background: color-mix(in srgb, var(--purple-wash) 72%, var(--bg-card));
+  border-color: color-mix(in srgb, var(--purple-primary) 42%, var(--border-default));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--purple-glow) 55%, transparent), 0 8px 24px color-mix(in srgb, var(--purple-glow) 38%, transparent);
+  color: var(--purple-bright);
+}
+
+.premium-nav__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-self: end;
+}
+
+.premium-nav__icon-button,
+.premium-nav__profile-button {
+  align-items: center;
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: inline-flex;
+  justify-content: center;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.premium-nav__icon-button {
+  border-radius: 999px;
+  height: 34px;
+  width: 34px;
+}
+
+.premium-nav__icon-button:hover,
+.premium-nav__profile-button:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.premium-nav__profile {
+  position: relative;
+}
+
+.premium-nav__profile-button {
+  border-radius: 999px;
+  gap: 5px;
+  height: 34px;
+  padding: 3px 8px 3px 3px;
+}
+
+.premium-nav__avatar {
+  align-items: center;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--success) 24%, var(--bg-card)), var(--bg-elevated));
+  border: 1px solid color-mix(in srgb, var(--success) 26%, var(--border-subtle));
+  border-radius: 999px;
+  color: var(--text-primary);
+  display: inline-flex;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+
+.premium-nav__chevron {
+  transition: transform 160ms ease;
+}
+
+.premium-nav__chevron--open {
+  transform: rotate(180deg);
+}
+
+.premium-nav__menu {
+  background: color-mix(in srgb, var(--bg-card) 94%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--border-default);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  min-width: 220px;
+  padding: 8px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+}
+
+.premium-nav__menu-header {
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 6px;
+  padding: 8px 8px 10px;
+}
+
+.premium-nav__menu-name {
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.premium-nav__menu-email {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.premium-nav__menu-item {
+  align-items: center;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  display: flex;
+  font-size: 12px;
+  font-weight: 560;
+  gap: 8px;
+  padding: 9px 8px;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.premium-nav__menu-item:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.dashboard-main {
+  flex: 1;
+  margin-top: 56px;
+  min-height: calc(100dvh - 56px);
+  overflow-x: hidden;
+}
+
+@media (max-width: 720px) {
+  .premium-nav {
+    grid-template-columns: auto 1fr auto;
+    height: 58px;
+    padding: 0 12px;
+  }
+
+  .premium-nav__name {
+    display: none;
+  }
+
+  .premium-nav__tabs {
+    gap: 2px;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 3px;
+    scrollbar-width: none;
+  }
+
+  .premium-nav__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .premium-nav__tab {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .premium-nav__actions {
+    gap: 6px;
+  }
+
+  .premium-nav__icon-button {
+    height: 32px;
+    width: 32px;
+  }
+
+  .premium-nav__profile-button {
+    height: 32px;
+    padding-right: 6px;
+  }
+
+  .premium-nav__avatar {
+    height: 26px;
+    width: 26px;
+  }
+
+  .dashboard-main {
+    margin-top: 58px;
+    min-height: calc(100dvh - 58px);
+  }
+}

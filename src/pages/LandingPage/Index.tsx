@@ -1,14 +1,16 @@
 import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Check, Copy, TerminalSquare, ArrowRight } from 'lucide-react';
+import { Check, Copy, TerminalSquare, ArrowRight, Sun, Moon } from 'lucide-react';
 import styles from './Index.module.css';
 import { ChromaGrid } from '../../components/ChromaGrid';
 import type { ChromaGridItem } from '../../components/ChromaGrid';
 import { CodePreview } from '../../components/CodePreview';
 import Logo from '../../components/Logo';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const LandingPage = () => {
   const [copied, setCopied] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
   const heroRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -80,9 +82,14 @@ const LandingPage = () => {
           <a href="#/plan" className={styles.navLink}>Pricing</a>
           <a href="#/playground" className={styles.navLink}>Sign In</a>
         </div>
-        <a href="#/playground" className={styles.cta}>
-          Get Started <TerminalSquare size={16} />
-        </a>
+        <div className={styles.navActions}>
+          <button className={styles.themeToggle} onClick={toggleTheme} aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}>
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <a href="#/playground" className={styles.cta}>
+            Get Started <TerminalSquare size={16} />
+          </a>
+        </div>
       </motion.nav>
 
       {/* Hero */}

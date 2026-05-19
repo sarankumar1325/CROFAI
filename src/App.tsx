@@ -5,9 +5,8 @@ import DashboardPage from './pages/DashboardPage';
 import PlaygroundPage from './pages/PlaygroundPage';
 import PricingPage from './pages/PricingPage';
 import SettingsPage from './pages/SettingsPage';
-import ArenaPage from './pages/ArenaPage';
 
-const DASHBOARD_ROUTES = ['#/dashboard', '#/playground', '#/arena', '#/plan', '#/settings'];
+const DASHBOARD_ROUTES = ['#/dashboard', '#/playground', '#/plan', '#/dedicated', '#/settings'];
 
 function isDashboardRoute(hash: string) {
   return DASHBOARD_ROUTES.some(r => hash.startsWith(r));
@@ -42,8 +41,8 @@ function App() {
   if (hash.startsWith('#/docs')) return <DocsPage />;
   if (hash.startsWith('#/dashboard')) return <DashboardPage />;
   if (hash.startsWith('#/playground')) return <PlaygroundPage />;
-  if (hash.startsWith('#/arena')) return <ArenaPage />;
   if (hash.startsWith('#/plan')) return <PricingPage />;
+  if (hash.startsWith('#/dedicated')) return <PricingPage currentPage="dedicated" />;
   if (hash.startsWith('#/settings')) return <SettingsPage />;
   return <LandingPage />;
 }
